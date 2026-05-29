@@ -635,7 +635,11 @@ footer{background:var(--ink);color:var(--gold);padding:40px 0;text-align:center;
     <p class="footer-disclaimer">This glossary is provided for informational and educational purposes only. UK property tax law is complex and changes frequently — always consult a qualified accountant, solicitor, or mortgage broker before making property investment decisions. MMDAI accepts no liability for financial decisions based on this content. Information correct as of April 2026.</p>
   </div>
 </footer>
-
+<script>
+function setCookieConsent(c){localStorage.setItem('cookieConsent',c);document.getElementById('cookieBanner').style.display='none';}
+if(!localStorage.getItem('cookieConsent')){document.getElementById('cookieBanner').style.display='flex';}
+document.querySelectorAll('.faq-item').forEach(i=>{i.addEventListener('toggle',()=>{if(i.open)document.querySelectorAll('.faq-item').forEach(o=>{if(o!==i&&o.open)o.removeAttribute('open');});});});
+</script>
 <script>
 let activeFilter = 'all';
 
@@ -687,13 +691,7 @@ function updateActiveOnScroll() {
     if (s.getBoundingClientRect().top < 180) current = s.dataset.letter;
   });
   document.querySelectorAll('.letter-btn').forEach(l => l.classList.toggle('active', l.textContent === current));
-}
-
-<script>
-function setCookieConsent(c){localStorage.setItem('cookieConsent',c);document.getElementById('cookieBanner').style.display='none';}
-if(!localStorage.getItem('cookieConsent')){document.getElementById('cookieBanner').style.display='flex';}
-document.querySelectorAll('.faq-item').forEach(i=>{i.addEventListener('toggle',()=>{if(i.open)document.querySelectorAll('.faq-item').forEach(o=>{if(o!==i&&o.open)o.removeAttribute('open');});});});
-</script> 
+} 
 
 buildLetterGrid();
 filterTerms();
