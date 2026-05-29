@@ -618,9 +618,9 @@ footer{background:var(--ink);color:var(--gold);padding:40px 0;text-align:center;
   </div>
 </footer>
 <script>
-function setCookieConsent(c){localStorage.setItem('cookieConsent',c);document.getElementById('cookieBanner').style.display='none';}
-if(!localStorage.getItem('cookieConsent')){document.getElementById('cookieBanner').style.display='flex';}
-document.querySelectorAll('.faq-item').forEach(i=>{i.addEventListener('toggle',()=>{if(i.open)document.querySelectorAll('.faq-item').forEach(o=>{if(o!==i&&o.open)o.removeAttribute('open');});});});
+function setCookieConsent(v){localStorage.setItem('cookieConsent',v);document.getElementById('cookieBanner').style.display='none';
+if(v==='accepted')loadAnalytics();} if(!localStorage.getItem('cookieConsent'))
+{document.getElementById('cookieBanner').style.display='flex';}  
 </script>
 <script>
 let activeFilter = 'all';
