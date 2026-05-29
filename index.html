@@ -63,6 +63,16 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
 .hd-nav a{font-size:13px;font-weight:500;color:var(--ink3);text-decoration:none;transition:color .15s;}
 .hd-nav a:hover{color:var(--ink);}
 
+/* Cookie */
+.cookie-banner{position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#0f1117;padding:16px 24px;display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;font-size:13px;}
+.cookie-banner p{max-width:560px;text-align:center;color:rgba(255,255,255,.7);}
+.cookie-banner a{color:#fff;text-decoration:underline;}
+.cookie-btn{padding:8px 20px;border-radius:40px;font-size:13px;font-weight:700;cursor:pointer;border:none;}
+.cookie-accept{background:#c8a84b;color:#0f1117;}
+.cookie-reject{background:transparent;color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.3)!important;}
+.cookie-buttons{display:flex;gap:8px;}
+@media(max-width:600px){.cookie-banner{flex-direction:column;text-align:center;}} 
+
 /* Wrap */
 .wrap{max-width:1160px;margin:0 auto;padding:0 24px;}
 
@@ -164,7 +174,7 @@ footer{background:var(--ink);color:var(--gold);padding:40px 0;text-align:center;
 </head>
 <body>
 <div class="cookie-banner" id="cookieBanner" style="display:none;">
-  <p>We use cookies from Google Analytics. See our <a href="https://mmandai.github.io/privacy/">Privacy Policy</a>.</p>
+  <p>We use cookies from Google Analytics and Google AdSense. See our <a href="https://mmandai.github.io/privacy/">Privacy Policy</a>.</p>
   <div class="cookie-buttons">
     <button class="cookie-btn cookie-accept" onclick="setCookieConsent('accepted')">Accept</button>
     <button class="cookie-btn cookie-reject" onclick="setCookieConsent('rejected')">Reject</button>
@@ -679,11 +689,11 @@ function updateActiveOnScroll() {
   document.querySelectorAll('.letter-btn').forEach(l => l.classList.toggle('active', l.textContent === current));
 }
 
-function setCookieConsent(c){localStorage.setItem('cookieConsent',c);document.getElementById('cookieBanner').style.display='none';if(c==='accepted')loadAnalytics();}
+<script>
+function setCookieConsent(c){localStorage.setItem('cookieConsent',c);document.getElementById('cookieBanner').style.display='none';}
 if(!localStorage.getItem('cookieConsent')){document.getElementById('cookieBanner').style.display='flex';}
-
-function setCookieConsent(v){localStorage.setItem('cookieConsent',v);document.getElementById('cookieBanner').style.display='none';if(v==='accepted')loadAnalytics();}
-if(!localStorage.getItem('cookieConsent')){document.getElementById('cookieBanner').style.display='flex';}
+document.querySelectorAll('.faq-item').forEach(i=>{i.addEventListener('toggle',()=>{if(i.open)document.querySelectorAll('.faq-item').forEach(o=>{if(o!==i&&o.open)o.removeAttribute('open');});});});
+</script> 
 
 buildLetterGrid();
 filterTerms();
